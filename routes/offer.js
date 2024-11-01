@@ -152,7 +152,6 @@ router.put(
           })
         );
       }
-      console.log(offerToUpdate.product_details);
 
       await offerToUpdate.save();
 
@@ -177,7 +176,7 @@ router.delete("/offer/:offerId", isAuthenticated, async (req, res) => {
         resource_type: "image",
       });
     }
-    cloudinary.api.delete_folder("vinted/offers/" + req.params.offerId);
+    await cloudinary.api.delete_folder(`vinted/offers/${req.params.offerId}`);
     await Offer.deleteOne(offerToDelete);
 
     return res.status(200).json("Supprimer!");
@@ -199,8 +198,6 @@ router.get("/offers", async (req, res) => {
     } else if (req.query.sort === "price-asc") {
       sort.product_price = "asc";
     }
-
-    console.log(sort);
 
     const filters = {
       product_name: title,
