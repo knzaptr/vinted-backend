@@ -21,6 +21,8 @@ mongoose.connect("mongodb://localhost:27017/Vinted");
 app.get("/", (req, res) => {
   return res.status(200).json({ message: "Welcome to Vinted 😇" });
 });
+
+// Pour les routes inconnues
 app.all("*", (req, res) => {
   return res.status(404).json({ error: "This route does not exist 🤔" });
 });
