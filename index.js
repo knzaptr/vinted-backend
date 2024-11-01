@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(userRouter);
 app.use(offerRouter);
 
-mongoose.connect("mongodb://localhost:27017/Vinted");
+mongoose.connect(process.env.MONGODB);
 app.get("/", (req, res) => {
   return res.status(200).json({ message: "Welcome to Vinted 😇" });
 });
