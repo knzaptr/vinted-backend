@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/user");
 const offerRouter = require("./routes/offer");
+const cors = require("cors");
 
 require("dotenv").config();
 const cloudinary = require("cloudinary").v2; // On n'oublie pas le `.v2` à la fin
@@ -14,6 +15,7 @@ cloudinary.config({
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use(userRouter);
 app.use(offerRouter);
 
