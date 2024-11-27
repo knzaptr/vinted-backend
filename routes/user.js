@@ -81,9 +81,9 @@ router.post("/user/login", async (req, res) => {
 
     if (hashToCompare === userLogin.hash) {
       return res.status(200).json({
-        _id: newUser._id,
-        token: newUser.token,
-        account: newUser.account,
+        _id: userLogin._id,
+        token: userLogin.token,
+        account: userLogin.account,
       });
     } else {
       return res.status(400).json({ message: "The password is incorrect 🤔" });
